@@ -1,8 +1,8 @@
 /*
   Joan Chirinos
   APCS pd08
-  HW36 -- Be Rational
-  2017-11-1
+  HW37 -- Be More Rational
+  2017-11-20
 */
 
 public class Rational {
