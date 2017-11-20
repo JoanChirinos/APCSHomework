@@ -69,16 +69,13 @@ public class Rational {
 	q = this.q * number.q;
     }
 
-    //Tests each number from max(p, q) to 2. Returns number if common factor
-    //If none are common factors, returns 1
+    //Uses Euclidean Algorithm to get gcd
+    //If p % q == 0, then than means q is the gcd.
+    //Otherwise, p = q and q is the remainder of p / q. Then try again
     public int gcd() {
-	int gcd = p - 1;
-	if (q > p) gcd = q - 1;
-	while (gcd > 1) {
-	    if (p % gcd == 0 && q % gcd == 0) return gcd;
-	    gcd--;
-	}
-	return 1;
+	if (p % q == 0) return q;
+	Rational temp = new Rational(q, p % q);
+	return temp.gcd();
     }
 
     //Divides p and q by gcd
