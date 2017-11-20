@@ -1,0 +1,22 @@
+public class Commafier {
+
+    public static String commafyR(int x) {
+	sop("facE")
+    }
+    
+    public static void main ( String [] args ) {
+	sop(12345 % 1000);
+    }
+    public static void sop (String x) {
+	System.out.println(x);
+    }
+    public static void sop (int x) {
+	System.out.println(x);
+    }
+    public static void sop (double x) {
+	System.out.println(x);
+    }
+    public static void sop (boolean x) {
+	System.out.println(x);
+    }
+}

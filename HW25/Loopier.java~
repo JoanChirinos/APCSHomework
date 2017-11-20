@@ -1,0 +1,93 @@
+/*
+Joan Chirinos
+APCS pd8
+HW25 -- All Hallow's Eve
+2017-10-31
+*/
+
+/*
+                 _
+                /))
+             __(((__
+           .' _`""`_`'.
+          /  /\\  /\\  \
+         |  /)_\\/)_\\  |
+         |  _  _()_  _  |
+         |  \\/\\/\\//  |
+          \  \/\/\/\/  /
+           '.___..___.'
+
+creds to some random website
+
+*/
+
+public class Loopier {
+    
+    public static void fillArray(int[] arr) {
+	for(int i = 0; i < arr.length; i++){ 
+	    arr[i] = (int) (Math.random() * 10);
+	}
+    }
+
+    public static String arrToString(int[] arr) {
+	String retStr = "[";
+	for (int i = 0; i < arr.length - 1; i++) {
+	    retStr += arr[i] + ",";
+	}
+	retStr += arr[arr.length - 1] + "]";
+	return retStr;
+    }
+
+    public static int linSearch(int[] a, int target) {
+	for(int i = 0; i < a.length; i++) {
+	    if (a[i] == target) return i;
+	}
+	return -1;
+    }
+
+    public static int linSearchR(int[] a, int target) {
+	
+    }
+
+    public static int freq(int[] a, int target) {
+	int counter = 0;
+	for(int i = 0; i < a.length; i++) {
+	    if (a[i] == target) counter++;
+	}
+	return counter;
+    }
+
+
+
+
+    //Main Method
+    public static void main(String[] args) {
+	int[] randArray = new int[10];
+	fillArray(randArray);
+	sop(arrToString(randArray));
+
+	int[] array = {1, 2, 3};
+	sop(arrToString(array));
+
+	int[] linSearchArray = {3, 4, 5};
+	sop(linSearch(linSearchArray, 4));
+
+	int[] freqArray = {0,0,2,2,2,4,4,4,4,5};
+	sop(freq(freqArray, 0)); //Returns 2
+	sop(freq(freqArray, 4)); //Returns 4
+	sop(freq(freqArray, 21)); //Returns 0
+    }
+
+    public static void sop(String x) {
+	System.out.println(x);
+    }
+    public static void sop(int x) {
+	System.out.println(x);
+    }
+    public static void sop(double x) {
+	System.out.println(x);
+    }
+    public static void sop(boolean x) {
+	System.out.println(x);
+    }
+}
