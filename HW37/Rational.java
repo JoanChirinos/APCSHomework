@@ -73,9 +73,31 @@ public class Rational {
     //If p % q == 0, then than means q is the gcd.
     //Otherwise, p = q and q is the remainder of p / q. Then try again
     public int gcd() {
+	//I like this commented code better, but Brown said to use 2 methods
+	/*
 	if (p % q == 0) return q;
 	Rational temp = new Rational(q, p % q);
 	return temp.gcd();
+	*/
+	return gcd(p, q);
+    }
+
+    public static int gcd(int n, int d) {
+	if (n % d == 0) return d;
+	return gcd(d, n % d);
+
+	//Brown's code (I also don't like this one xD)
+	/*
+	int a, b, x;
+	a = n;
+	b = d;
+	while (a % b != 0) {
+	    x = a;
+	    a = b;
+	    b = x % b;
+	}
+	return b;
+	*/
     }
 
     //Divides p and q by gcd
@@ -87,9 +109,19 @@ public class Rational {
 
     //Compares the floatValues of this object and parameter
     public int compareTo(Rational number) {
+	//Don't floaty point because 2/3 != 400/600
+	/*
 	if (this.floatValue() == number.floatValue()) return 0;
 	if (this.floatValue() > number.floatValue()) return 1;
 	return -1;
+	*/
+
+	//Brown's code
+	int thisNum, otherNum;
+	thisNum = this.p * number.q;
+	otherNum = this.q * number.p;
+
+	return thisNum - otherNum;
     }
 
     public static void main(String[] args) {
