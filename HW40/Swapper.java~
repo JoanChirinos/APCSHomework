@@ -1,8 +1,8 @@
 /*
   Joan Chirinos
   APCS1 pd 08
-  HW38 -- Put It Together
-  2017-11-21
+  HW40 -- Make It Better
+  2017-11-23
 */
 
 /*
@@ -10,6 +10,13 @@
   Strings composed of lowercase and uppercase letters, numbers, and some
   letters. Displays it and then prompts user to pick 2 locations, swap
   these elements, and redisplay the 2D array
+ */
+
+/*
+  IMPROVEMENTS FOR PT2
+  - Added row and column numbering
+  - Added a confirmation message
+  - Fixed some error-checking mistakes
  */
 
 import cs1.Keyboard;
