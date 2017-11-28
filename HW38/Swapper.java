@@ -28,7 +28,7 @@ public class Swapper {
 
 	//Makes sure rows and columns are valid
 	if (r1 < 0 || r2 < 0 || c1 < 0 || c2 < 0 ||
-	    r1 > arr.length - 1 || r1 > arr.length - 1||
+	    r1 > arr.length - 1 || r2 > arr.length - 1||
 	    c1 > arr[r1].length - 1 || c2 > arr[r2].length - 1) {
 
 	    System.out.println("\nInvalid value for >= 1 row/column");
@@ -49,8 +49,17 @@ public class Swapper {
     public static void displayArray(String[][] arr) {
 	    
 	System.out.println();
+	int numColumns = 0;
+	System.out.print("\t    ");
+	for ( ; numColumns < arr[0].length; numColumns++) {
+	    System.out.print(numColumns + "     ");
+	}
+	System.out.print("\n");
+
+	int numRows = 0;
 	for (String[] r : arr) {
-	    System.out.print("\t");
+	    System.out.print("\t" + numRows + "  ");
+	    numRows++;
 	    for (String c : r) {
 		if (c.length() == 3)
 		    System.out.print(c + "   ");
@@ -102,26 +111,45 @@ public class Swapper {
 			   randomString() + ", " +
 			   randomString());
 	
+<<<<<<< HEAD
 	String[][] arr = makeArray(3, 4);
+=======
+	String[][] arr = new String[4][5];
+>>>>>>> 484f5d153a348f5dbeb29892ce7a071e8e200949
 	populate(arr);
-	displayArray(arr);
 
-	System.out.println("\nSwap Locations\nFirst String");
-	
-	System.out.print("\tRow: ");
-	int row1 = Keyboard.readInt();
-	
-	System.out.print("\tColumn: ");
-	int column1 = Keyboard.readInt();
+	int row1, row2, column1, column2;
+	String confirm = "N";
 
-	System.out.println("\nSecond String");
-	
-	System.out.print("\tRow: ");
-	int row2 = Keyboard.readInt();
-	
-	System.out.print("\tColumn: ");
-	int column2 = Keyboard.readInt();
+	//Makes sure user wants to swap
+	while (true) {
 
+	    displayArray(arr);
+	    
+	    System.out.println("\nSwap Locations\nFirst String");
+	
+	    System.out.print("\tRow: ");
+	    row1 = Keyboard.readInt();
+	
+	    System.out.print("\tColumn: ");
+	    column1 = Keyboard.readInt();
+
+	    System.out.println("\nSecond String");
+	
+	    System.out.print("\tRow: ");
+	    row2 = Keyboard.readInt();
+	    
+	    System.out.print("\tColumn: ");
+	    column2 = Keyboard.readInt();
+
+	    System.out.println("Are you sure you want to swap (" +
+			       row1 + ", " + column1 + ") with (" +
+			       row2 + ", " + column2 + ")? Y/N");
+	    confirm = Keyboard.readString();
+
+	    if (confirm.equals("Y") || confirm.equals("y")) break;
+	}
+	    
 	swap(arr, row1, column1, row2, column2);
 
 	System.out.println();
