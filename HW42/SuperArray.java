@@ -159,7 +159,6 @@ public class SuperArray
 	mayfield.remove(3);
 	System.out.println("Printing SuperArray mayfield post-remove...");
 	System.out.println(mayfield);
-	mayfield.remove(3);
 
 	mayfield.add(3,99);
 	System.out.println("Printing SuperArray mayfield post-insert...");
