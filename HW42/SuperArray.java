@@ -100,7 +100,6 @@ public class SuperArray
 	    for ( ; index < _size; index++) {
 		_data[index] = _data[index + 1];
 	    }
-	    _data[index] = 0;
 	    _size--;
 	}
 	else {
