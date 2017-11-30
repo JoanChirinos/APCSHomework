@@ -15,7 +15,7 @@
  * removing an element at specified index
  ***************************/
 
-public class SuperArray
+public class SuperArray implements ListInt
 {
 
     private int[] _data;  //underlying container
