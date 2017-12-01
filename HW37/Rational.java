@@ -5,7 +5,7 @@
   2017-11-20
 */
 
-public class Rational {
+public class Rational implements Comparable {
 
     // Instance Variables
     public int p;
@@ -116,11 +116,13 @@ public class Rational {
 	return -1;
 	*/
 
+
 	//Brown's code
+
 	int thisNum, otherNum;
 	thisNum = this.p * number.q;
 	otherNum = this.q * number.p;
-
+	
 	return thisNum - otherNum;
     }
 
