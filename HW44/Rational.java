@@ -1,6 +1,5 @@
 /******************************
  * class Rational v.3
- * (SKELETON)
  * stores a rational number (p/q s.t. p,q ints && q!=0)
  * facilitates
  * multiplication
