@@ -155,8 +155,7 @@ public class Rational implements Comparable
     //...thus allowing for direct comparison of attributes
     reduce();
 
-    if (this.compareTo(other) == 0) return true;
-    return false;
+    return this.compareTo(other) == 0;
 
   }//end equals()
 
@@ -174,27 +173,21 @@ public class Rational implements Comparable
     // If other is not a Rational, throw an exception
     // This will exit the function, generating a runtime error
 
-      Exception notRational = new Exception("Not a Rational");
-      try {
-	  if (other instanceof Rational) {
-	  int thisNum, otherNum;
-	  thisNum = this._numerator * ((Rational)other)._denominator;
-	  otherNum = this._denominator * ((Rational)other)._numerator;
-	  }
-	  else throw notRational;
-      }
-      catch (Exception notRational) {
-	  
-      }
-      return thisNum - otherNum;
+      int thisNum, otherNum;
 
+      if (!(other instanceof Rational))
+	  throw new ClassCastException("That looks a lot like not a Rational");
+      thisNum = this._numerator * ((Rational)other)._denominator;
+      otherNum = ((Rational)other)._numerator * this._denominator;
+      return thisNum - otherNum;
+      
   }
 
 
   //main method for testing
   public static void main( String[] args )
   {
-    /*~~~v~~~~~~~~~~down~goer~3~~~~~~~~~~~~~v~~~~~
+
       Rational r = new Rational( 3, 7 );
       Rational s = new Rational();
       Rational t = new Rational( 8, 5 );
@@ -277,11 +270,12 @@ public class Rational implements Comparable
       System.out.println( "r > s: " +  r.compareTo(s) );
       System.out.println( "s > t: " +  s.compareTo(t) );
       //uncommenting the line below should trigger a runtime error
-      //  System.out.println( "s > y: " +  s.compareTo(y) );
+      System.out.println( "s > y: " +  s.compareTo(y) );
 
       System.out.println( "v.equals(v): " + v.equals(v) );
       System.out.println( "v.equals(w): " + v.equals(w) );
       System.out.println( "w.equals(x): " + w.equals(x) );
+    /*~~~v~~~~~~~~~~down~goer~3~~~~~~~~~~~~~v~~~~~
       ~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~*/
   }
 
