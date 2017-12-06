@@ -1,0 +1,37 @@
+/*
+  Joan Chirinos
+  APCS1 pd08
+  HW47 -- ascending
+  2017-5-17
+*/
+
+import java.util.ArrayList;
+
+public class OrderedArrayList {
+
+    ArrayList<Comparable> _data;
+    
+    public OrderedArrayList() {
+	_data = new ArrayList<Comparable>;
+    }
+
+    public boolean add(Object o) {
+	int index = 0;
+	for ( ; index < _data.size(); index++) {
+	    if (_data.get(index).compareTo(o) > 0) {
+		index--;
+		break;
+	    }
+	}
+	_data.add(o, index);
+    }
+    
+    public static void main(String[] args) {
+	OrderedArrayList arr = new OrderedArrayList();
+	arr.add(5);
+	arr.add(6);
+	arr.add(4);
+	System.out.println(arr);
+    }
+
+}

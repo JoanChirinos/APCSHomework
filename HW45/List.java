@@ -1,10 +1,10 @@
 public interface List {
 
-    public boolean add(java.lang.Object x);
+    public boolean add(Object x);
 
-    public java.lang.Object get(int index);
+    public Object get(int index);
 
-    public java.lang.Object set(int index, java.lang.Object o);
+    public Object set(int index, Object o);
 
     public int size();
     
