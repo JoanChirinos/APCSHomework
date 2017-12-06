@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class OrderedArrayList {
 
-    ArrayList<Comparable> _data;
+    private ArrayList<Comparable> _data;
 
     // makes _data a blank ArrayList<Comparable>
     public OrderedArrayList() {
@@ -42,13 +42,7 @@ public class OrderedArrayList {
 
     // returns the OrderedArrayList as a string in the format [e0, e1, e2...]
     public String toString() {
-	String str = "[";
-	for (Object o : _data) {
-	    str += o + ",";
-	}
-	if (str.length() > 1)
-	    str = str.substring(0, str.length() - 1);
-	return str + "]";
+	data.toString();
     }//end toString
 
     /********************
