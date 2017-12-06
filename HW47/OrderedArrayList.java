@@ -109,6 +109,34 @@ public class OrderedArrayList {
 	}	
 	System.out.println(arr + "\n");
 	
+	for (int i = 0; i < 40; i++) {
+	    System.out.print("-");
+	}
+	System.out.println("");
+
+	System.out.println("Making array w/ 20 random int in range [0, 100)\n");
+	int[] intarr = new int[20];
+	for (int i = 0; i < intarr.length; i++) {
+	    intarr[i] = (int)(Math.random() * 100);
+	}
+
+	System.out.print("[" + intarr[0]);
+	for (int i = 1; i < intarr.length; i++) {
+	    System.out.print("," + intarr[i]);
+	}
+	System.out.println("]\n");
+
+	System.out.println("Adding each value in the int array to a new " +
+			   "OrderedArrayList. Should be sorted ascending\n");
+
+	OrderedArrayList arrlst = new OrderedArrayList();
+
+	for (int i : intarr) {
+	    arrlst.add(i);
+	}
+
+	System.out.println(arrlst + "\n");
+	
     }//end main
 
 }//end class
