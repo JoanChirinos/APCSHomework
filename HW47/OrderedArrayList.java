@@ -31,23 +31,32 @@ public class OrderedArrayList {
 
     // add adds the Object o to a place where it would keep the OrderedArrayList
     // sorted. Returns true once done
-    public boolean add(Comparable o) {
+    public void add(Comparable o) {
+	/*
 	int index = 0;
 	for ( ; index < _data.size(); index++) {
 	    if (_data.get(index).compareTo(o) > 0) { break; }
 	}
 	_data.add(index, o);
-	return true;
+	return true; <-----Mine had boolean
+	*/
+	//Brown's code
+	for (int i = 0; i < _data.size(); i++) {
+	    if (o.compareTo(_data.get(i)) < 0) {
+		_data.add(i, o);
+		return;
+	    }
+	}
+	_data.add(o);
     }//end add
-
-    // returns the OrderedArrayList as a string in the format [e0, e1, e2...]
-    public String toString() {
-	data.toString();
-    }//end toString
 
     /********************
      * Methods below are the same as in ArrayList
      ********************/
+
+    public String toString() {
+	data.toString();
+    }//end toString
     
     public Object get(int index) {
 	return _data.get(index);
@@ -57,7 +66,7 @@ public class OrderedArrayList {
 	return _data.size();
     }//end size
 
-    public Object remove(int index) {
+    public Comparable remove(int index) {
 	return _data.remove(index);
     }//end remove
     
