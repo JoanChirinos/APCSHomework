@@ -1,3 +1,10 @@
+/*
+  Joan Chirinos
+  APCS1 pd08
+  HW50 -- Dat Bubbly Tho
+  2017-12-8
+*/
+
 /******************************
  * class BubbleSort -- implements bubblesort algorithm (vanilla)
  ******************************/
@@ -37,24 +44,19 @@ public class BubbleSort {
     // VOID version of bubbleSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void bubbleSortV( ArrayList<Comparable> data )
-    {
-	while (true) {
-	    
-	    boolean sorted = true;
+    public static void bubbleSortV( ArrayList<Comparable> data ) {
+	boolean sorted = false;
+	while (!sorted) {
+	    sorted = true;
 	    for (int i = 0; i < data.size() - 1; i++) {
 		if (data.get(i).compareTo(data.get(i + 1)) > 0) {
 		    Comparable temp = data.get(i + 1);
 		    data.set(i + 1, data.get(i));
 		    data.set(i, temp);
 		    sorted = false;
-		    break;
-		}		
+		}
+		
 	    }
-	    if (sorted) {
-		break;
-	    }
-	    
 	}
     }
 
@@ -94,25 +96,30 @@ public class BubbleSort {
 	*/
 
 
-	  ArrayList glen = new ArrayList<Integer>();
-	  glen.add(7);
-	  glen.add(1);
-	  glen.add(5);
-	  glen.add(12);
-	  glen.add(3);
-	  System.out.println( "ArrayList glen before sorting:\n" + glen );
-	  ArrayList glenSorted = bubbleSort( glen );
-	  System.out.println( "sorted version of ArrayList glen:\n" 
-	  + glenSorted );
-	  System.out.println( "ArrayList glen after sorting:\n" + glen );
+	ArrayList glen = new ArrayList<Integer>();
+	glen.add(7);
+	glen.add(1);
+	glen.add(5);
+	glen.add(12);
+	glen.add(3);
+	System.out.println( "ArrayList glen before sorting:\n\t" + glen );
+	ArrayList glenSorted = bubbleSort( glen );
+	System.out.println( "sorted version of ArrayList glen:\n\t" 
+			    + glenSorted );
+	System.out.println( "ArrayList glen after sorting:\n\t" + glen +"\n");
 
-	  ArrayList coco = populate( 10, 1, 1000 );
-	  System.out.println( "ArrayList coco before sorting:\n" + coco );
-	  ArrayList cocoSorted = bubbleSort( coco );
-	  System.out.println( "sorted version of ArrayList coco:\n" 
-	  + cocoSorted );
-	  System.out.println( "ArrayList coco after sorting:\n" + coco );
-	  System.out.println( coco );
+	ArrayList coco = populate( 10, 1, 1000 );
+	System.out.println( "ArrayList coco before sorting:\n\t" + coco );
+	ArrayList cocoSorted = bubbleSort( coco );
+	System.out.println( "sorted version of ArrayList coco:\n\t" 
+			    + cocoSorted );
+	System.out.println( "ArrayList coco after sorting:\n\t" + coco + "\n");
+	
+	shuffle(coco);
+	System.out.println( "ArrayList coco after shuffling:\n\t" + coco );
+	ArrayList cocoSortedAgain = bubbleSort( coco );
+	System.out.println( "sorted version of ArrayList coco:\n\t" 
+			    + cocoSortedAgain );	
 
 
     }//end main
