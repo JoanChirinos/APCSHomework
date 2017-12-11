@@ -45,13 +45,16 @@ public class SelectionSort
     // postcondition: data's elements sorted in ascending order
     public static void selectionSortV( ArrayList<Comparable> data ) {
 
+	//el is the index of the element we are replacing
 	for (int el = 0; el < data.size() - 1; el++) {
 	    int index = el;
+	    //i is the index of the least element in the unsorted part
 	    for (int i = el; i < data.size(); i++) {
 		if (data.get(index).compareTo(data.get(i)) >= 0) {
 		    index = i;
 		}
 	    }
+	    //swapping the 2 elements
 	    Comparable temp = data.get(index);
 	    data.set(index, data.get(el));
 	    data.set(el, temp);
@@ -66,11 +69,15 @@ public class SelectionSort
     public static ArrayList<Comparable>
 	selectionSort( ArrayList<Comparable> input ) 
     {
+	//arr is the array to return
 	ArrayList<Comparable> arr = new ArrayList<Comparable>();
+	//"add every element in input to arr..."
 	for (int i = 0; i < input.size(); i++) {
 	    arr.add(input.get(i));
 	}
+	//"... then sort arr..."
 	selectionSortV(arr);
+	//"...and once you're done, return arr!"
 	return arr;
 	
     }//end selectionSort
