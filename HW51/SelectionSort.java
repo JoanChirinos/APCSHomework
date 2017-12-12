@@ -55,9 +55,14 @@ public class SelectionSort
 		}
 	    }
 	    //swapping the 2 elements
+	    /*
 	    Comparable temp = data.get(index);
 	    data.set(index, data.get(el));
 	    data.set(el, temp);
+	    */
+
+	    //1-line swap!
+	    data.set(index, data.set(el, data.get(index)));
 	}
 	
     }//end selectionSortV
