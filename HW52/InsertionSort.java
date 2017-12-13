@@ -1,3 +1,10 @@
+/*
+  Joan Chirinos
+  APCS1 pd08
+  HW52 -- Insertion
+  2017-12-12
+*/
+
 /***************************************
  *  class InsertionSort -- implements InsertionSort algorithm
  ***************************************/
@@ -43,16 +50,14 @@ public class InsertionSort
 
 	    //index is the element you're testing
 	    int index = i;
-	    
 	    //while the element you're testing is at index >= 1 and
 	    //element index - 1 is greater than element index
 	    while (index >= 1 &&
 		   data.get(index - 1).compareTo(data.get(index)) > 0) {
 		//swap adjacent elements
-		data.set(index, data.set(index - 1, data.get(index)));
 		index--;
+		data.set(index, data.set(index + 1, data.get(index)));
 	    }
-	    
 	}
 	
     }//end insertionSortV
