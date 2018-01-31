@@ -168,7 +168,7 @@ public class Matrix
 	for (int i = 0; i < size(); i++)
 	    arr[i] = _matrix[r - 1][i];
 	return arr;
-    }//O(?)
+    }//O(n)
 
     //replaces row r with 1D array newRow
     //returns old row
@@ -196,14 +196,11 @@ public class Matrix
     //M[i,j] -> M[j,i] for all i,j
     public void transpose()
     {
-	for (int r = 0; r < size(); r++)
-	    for (int c = 0; c < r; c++) {
-		Object temp = _matrix[r][c];
-		_matrix[r][c] = _matrix[c][r];
-		_matrix[c][r] = temp;
-		//set(r, c, set(c, r, get(r, c)));
+	for (int r = 1; r < size() + 1; r++)
+	    for (int c = 1; c < r; c++) {
+		set(r, c, set(c, r, get(r, c)));
 	    }
-    }//O(?)
+    }//O(n^2)
     
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    

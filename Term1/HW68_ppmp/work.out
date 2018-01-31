@@ -1,0 +1,69 @@
+Rito - Joan Chirinos, Aaron Li, Johnny Wong
+APCS1 pd8
+HW68 -- PPMP
+2018-01-12
+
+PART I
+
+1. C
+2. D
+3. D
+4. E
+5. E
+6. C
+7. A
+8. A
+9. C
+10. D
+
+PART II
+
+11a:
+public int nextTankToFill(threshold) {
+	int indexOfSmallest = filler.getCurrentIndex();
+	for (int t = 0; t < tanks.length; t++) {
+		if (tanks[t].getFuelLevel() <= threshold &&
+		    tanks[t].getFuelLevel() <= tanks[indexOfSmallest].getFuelLevel()) {
+			indexOfSmallest = t;
+		}
+	}
+	return indexOfSmallest;
+}//end nextTankToFill
+
+11b:
+public void moveToLocation(int locIndex){
+	if (getCurrentIndex() > locIndex && isFacingRight()) changeDirection();
+	else if (getCurrentIndex() < locIndec && !(isFacingRight())) changeDirection();
+	moveForward(Math.abs(getCurrentIndex() - locIndex));
+}//end moveToLocation
+
+12a:
+private void fillBlock(String str) {
+	for (int r = 0; r < numRows; r++) {
+		for (int c = 0; c < numCols; c++) {
+			int i = r * numCols + c;
+			if (i < str.length()) {
+				letterBlock[r][c] = str.substring(i, i + 1);
+			}
+			else {
+				letterBlock[r][c] = "A";
+			}
+		}
+	}
+}//end fillBlock
+
+12b:
+public String encryptMessage(String message) {
+	int boxes = numRows * numCols;
+	String ret = "";
+	while (message.length() > boxes) {
+		fillBlock(message.substring(0, boxes);
+		message = message.substring(boxes, message.length());
+		ret += encryptBlock();
+	}
+	if (message.length() > 0) {
+		fillBlock(messsage);
+		ret += encryptBlock();
+	}
+	return ret;
+}//end encryptMessage
