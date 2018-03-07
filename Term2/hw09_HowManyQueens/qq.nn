@@ -1,0 +1,75 @@
+Joan Chirinos
+APCS2 pd08
+HW09 -- Yaaasss Queens
+2018-02-26
+
+I feel like the wording is unclear. What does "solvable" mean in this case?
+Isn't every board size solvable? Even if you have to do it by a brute force
+method, one would be able to solve it. Also, solve what exactly? Solve the 
+max number of queens per board size, or prove that a nxn can't fit n queens?
+
+2x2: 1 queen, because no matter where you place it no other spaces are valid
+
+3x3: 2 queens because 1 queen on any outer space eliminates all the spaces
+but 2, one of which is eliminated upon the placement of the other queen
+
+4x4: I found a solution where you can fit 4 queens on a 4x4:
+xxQx
+Qxxx
+xxxQ
+xQxx
+It also happens to be symmetrical
+
+5x5: I have also found a solution where you can fit 5 queens on a 5x5
+xxxQx
+Qxxxx
+xxQxx
+xxxxQ
+xQxxx
+It once again appears to be symmetrical
+
+Note that I was able to quickly verify my results using a little bit of
+netlogo code. Prior knowledge is a real help!
+
+Using this netlogo code, I found that, on a 4x4 board, if you chose a queen on
+an edge and then proceeded to place queens on the spaces that would cause
+the least number of unavailable spaces to intersect, you would get a correct
+solution
+
+However, this seemed to be a quirk of the 4x4 board as it didn't work
+consistently on the 5x5
+
+The code did, however, make it so much easier and faster (and more accurate)
+to visualize the placements of the queens
+
+6x6: I found a solution that turned out to be pretty nice
+xxxQxx
+Qxxxxx
+xxxxQx
+xQxxxx
+xxxxxQ
+xxQxxx
+
+7x7: Once again I found a nice solution. Kind of looks like stairs...
+
+xxxQxxx
+Qxxxxxx
+xxxxQxx
+xQxxxxx
+xxxxxQx
+xxQxxxx
+xxxxxxQ
+
+8x8: I'm sure there's some stair looking solution out there but after a couple
+tries I gave up and found this:
+xxxxQxxx
+xxxxxxxQ
+xxxQxxxx
+Qxxxxxxx
+xxQxxxxx
+xxxxxQxx
+xQxxxxxx
+xxxxxxQx
+
+I just want to repeat that netlogo is a lot of help for problems
+like this!

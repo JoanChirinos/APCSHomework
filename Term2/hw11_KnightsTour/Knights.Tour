@@ -1,0 +1,41 @@
+Joan Chirinos
+APCS2 pd08
+HW11 -- Get On the Bus
+2018-02-28
+
+Tour.java
+
+int[] _rows = {2, 2, -2, -2, 1, 1, -1, -1};
+int[] _cols = {-1, 1, 1, -1, 2, -2, 2, -2};
+int[][] _board;
+int _size;
+
+Tour(int n) {
+	1. _board = new int[n][n]
+	2. _size = n
+}
+
+boolean solve() {
+	1. for r in [0, _size)
+		1. for c in [0, _size)
+			1. if solveH(r, c, 1)
+				1. return true
+	2. return false
+}
+
+boolean solveH(int r, int c, int moveCount) {
+
+	1. if moveCount == (_size * _size), return true
+	2. _board[r][c] = moveCount
+	3. for rc in range[0, _size)
+		1. if (r + _rows[rc] in [0, _size) and == 0) and (c + _cols[rc] in [0, _size) and == 0)
+			1. if solveH(r + _rows[rc], c + _cols[rc], moveCount + 1)
+				1. return true
+	4. _board[r][c] = 0	
+	5. return false
+}
+
+Basically, for each spot in the board, try all of the combinations of knight
+moves such that you don't move to a previously occupied spot. If you get to
+64 moves, you'll know you've visited every spot, so return true. If no initial
+spot yields a combination that works, return false

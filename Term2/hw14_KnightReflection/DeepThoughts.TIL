@@ -1,0 +1,31 @@
+SooanhanAharinoi
+Rohan Ahammed, Joan Chirinos, Soojin Choi
+APCS2 pd08
+HW14 -- Finishing Knight’s Tour and Starting Maze Running
+2018-03-05
+
+Time using randomly chosen points on the board and no print statements: 
+5x5 = 0.16 s over 7 executions
+6x6 = 0.1752 over 7 executions
+7x7 = 167.8 over 4 executions
+8x8 = 278.934 over 4 executions
+
+Stuff about time:
+Section Uno:
+Q1: From any starting position, can an open tour always be found? Explain.
+We found evidence that there are cases with no solutions. This happens when the irregular motion of the knight happens to be ill fitting in the board.
+Q2: Same, but for closed tour.
+A solution for every spot can be made by proving one solution for the board, as the starting point and any other point may be switched without causing detriment to the solution. It’s hard to imagine that any board has no closed tours due to the sheer number of possible move combinations
+Q3: How do you explain the increase in execution time as n increases?
+The scope of the problem increases as n increases because more recursive calls are made for each row you add. As n increases, the number of squares you need to visit and the number of recursive calls you need to make and the extent to which you might end up going down a branch without it leading to anything is greater, so it will take a longer time to execute a larger number of recursive calls. We believe that this is exponential—O(x^n). The number of nodes on a binary tree of height n is 2^(n + 1) - 1, so it must be much higher for a tree with more branches emanating from each node than a binary tree has. I don’t know the exact average (because there can be 8 nodes coming from the starting one, but only 1 or 0 nodes later on in the tree), but as the board size increases, the number of nodes increases by a greater amount. This makes a brute force method pretty useless for big boards
+Q4: Thoughts on optimization?
+One might be able to find some sort of pattern, such as picking the node with the least available spaces first in order to speed up the backtracking and testing of another branch. 
+
+Section Deux:
+State your cleanest algo for finding your way out of the maze.
+Pseudocode:
+If you are the goal, tell your parent that you found the solution.
+If you are told you have the solution, tell your parent that you found the solution
+If you are the start and you are told you found the solution, stop. You’re done
+Otherwise, ask your 4 neighbors (up, down, left, right) to be your children (ONLY IF THEY DON’T HAVE PARENTS AND ARE NOT WALLS) and execute this algo
+
