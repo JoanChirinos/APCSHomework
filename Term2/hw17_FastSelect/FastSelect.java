@@ -1,0 +1,80 @@
+/*
+  Joan Chirinos
+  APCS2 pd08
+  HW17 -- So So Fast
+  2018-03-09
+*/
+
+public class FastSelect {
+
+  public static int nthSmallest(int[] arr, int n) {
+    System.out.println("Original: " + stringify(arr));
+    return helper(arr, 0, arr.length - 1, n);
+  }//end nthSmallest
+
+  public static int helper(int[] arr, int left, int right, int n) {
+    if (n > 0 && n <= right - left + 1) {
+      int s = partition(arr, left, right);
+      if (s - left == n - 1) {
+        return arr[s];
+      }
+      if (s - left > n - 1) {
+        return helper(arr, left, s - 1, n);
+      }
+      return helper(arr, s + 1, right, n - s + left - 1);
+    }
+    else return Integer.MIN_VALUE;
+  }//end helper
+
+  public static int partition(int[] arr, int left, int right) {
+    int pvtVal = arr[left];
+    swap(arr, left, right);
+    int s = left;
+    for (int i = left; i < right; i++) {
+      if (arr[i] <= pvtVal) {
+        swap(arr, s, i);
+        s++;
+      }
+    }
+    swap(arr, right, s);
+    return s;
+  }
+
+  public static void swap(int[] arr, int x, int y) {
+    int temp = arr[x];
+    arr[x] = arr[y];
+    arr[y] = temp;
+  }//end swap
+
+  public static String stringify(int[] arr) {
+    String retStr = "[";
+    for (int i : arr) {
+      retStr += i + ", ";
+    }
+    if (arr.length != 0) retStr = retStr.substring(0, retStr.length() - 2);
+    return retStr + "]";
+  }//end stringify
+
+  public static void main(String[] args) {
+    int[] test1 = {7, 1, 5, 12, 3};
+    int second = nthSmallest(test1, 2);
+    System.out.println("\nSecond smallest: " + second + "\n\n\n");
+
+    int[] test2 = {4, 7, 6, 2, 5, 9, 1, 0};
+    int third = nthSmallest(test2, 3);
+    System.out.println("\nThird smallest: " + third + "\n\n\n");
+
+    int[] test3 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int seventh = nthSmallest(test3, 7);
+    System.out.println("\nSeventh smallest: " + seventh + "\n\n\n");
+
+    int[] test4 = {4, 3, 2, 1};
+    int first = nthSmallest(test4, 1);
+    System.out.println("First smallest: " + first + "\n\n\n");
+
+    int[] test5 = {1, 2, 3};
+    int fourth = nthSmallest(test5, 4);
+    System.out.println("Fourth smallest: " + fourth + "\n\n\n");
+  }
+
+}//end class
