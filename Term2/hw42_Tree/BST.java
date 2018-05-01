@@ -37,14 +37,14 @@ public class BST {
   *****************************************************/
   public void insert( int newVal ) {
     TreeNode newNode = new TreeNode( newVal );
-    insert(_root, newNode);
-  }
-  //recursive helper for insert(int)
-  public void insert( TreeNode stRoot, TreeNode newNode ) {
     if (stRoot == null) {
       _root = newNode;
     }
-    else if (stRoot.getValue() < newNode.getValue()) {
+    else insert(_root, newNode);
+  }
+  //recursive helper for insert(int)
+  public void insert( TreeNode stRoot, TreeNode newNode ) {
+    if (stRoot.getValue() < newNode.getValue()) {
       if (stRoot.getRight() == null) {
         stRoot.setRight(newNode);
       }
