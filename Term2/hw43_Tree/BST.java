@@ -1,5 +1,5 @@
 /*
-Joan Chirinos
+Joan Chirinos, Shruthi Venkata
 APCS2 pd08
 HW43 -- BSTs is the Perfect Place for Shade
 2018-05-01
@@ -30,7 +30,6 @@ public class BST
   {
     _root = null;
   }
-
 
   /*****************************************************
   * void insert( int )
@@ -152,13 +151,17 @@ public class BST
 
   public int height(TreeNode t)
   {
+	//no more height if a leaf is reached
     if (t == null || t.isLeaf()) return 0;
 
     int r = height(t.getRight());
     int l = height(t.getLeft());
-
+	
+	//find maximum height of either right or left subtree
     int max = (r < l) ? l : r;
-    return 1 + max;
+    
+	//add 1 to height to account for current level
+	return 1 + max;
   }
 
 
@@ -174,6 +177,7 @@ public class BST
   public int numLeaves(TreeNode t)
   {
     if (t == null) return 0;
+	//isLeaf (in TreeNode) returns true if both right and left subtrees are null
     if (t.isLeaf()) return 1;
     return numLeaves(t.getRight()) + numLeaves(t.getLeft());
   }
