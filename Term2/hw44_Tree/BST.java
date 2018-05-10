@@ -182,6 +182,100 @@ public class BST
     return numLeaves(t.getRight()) + numLeaves(t.getLeft());
   }
 
+  public void remove(int i)
+  {
+    TreeNode[] l = parentChildFinder(i);
+    TreeNode parent = l[0];
+    TreeNode toRemove = l[1];
+    int d = (parent.getLeft() == toRemove) ? 0 : 1;
+
+    //leaf
+    if (toRemove.isLeaf()) {
+      if (d == 0) {
+        parent.setLeft(null);
+      }
+      else parent.setRight(null);
+    }
+
+    //2 childs
+    if (toRemove.getLeft() != null && toRemove.getRight() != null) {
+      if (d == 0) {
+        //need to find max
+        TreeNode max, maxP;
+        max = maxP = null;
+        max = toRemove;
+        while (max.getRight() != null) {
+          maxP = max;
+          max = max.getRight();
+        }
+
+        //set the parent of max to max's child
+        maxP.setRight(max.getLeft());
+
+        //make max point to toRemove's children
+        max.setRight(toRemove.getRight());
+        max.setLeft(toRemove.getLeft());
+
+        //kill toRemove
+        parent.setLeft(max);
+      }
+      else { //if d == 1
+        //need to find min
+        TreeNode min, minP;
+        min = minP = null;
+        min = toRemove;
+        while (min.getLeft() != null) {
+          minP = min;
+          min = min.getLeft();
+        }
+
+        //set the parent of max to max's child
+        minP.setLeft(min.getRight());
+
+        //make max point to toRemove's children
+        min.setRight(toRemove.getRight());
+        min.setLeft(toRemove.getLeft());
+
+        //kill toRemove
+        parent.setLeft(min);
+      }
+    }
+
+    //1 child
+    if (toRemove.getRight() != null) {
+      if (d == 0) {
+        parent.setLeft(toRemove.getRight());
+      }
+      else parent.setRight(toRemove.getRight());
+    }
+    else {
+      if (d == 0) {
+        parent.setLeft(toRemove.getLeft());
+      }
+      else parent.setRight(toRemove.getLeft());
+    }
+
+  }
+
+  private TreeNode[] parentChildFinder(int i)
+  {
+    TreeNode n = _root;
+    TreeNode parent = null;
+    while (n != null && n.getValue() != i) {
+      parent = n;
+      if (n.getValue() < i) {
+        n = n.getLeft();
+      }
+      else n = n.getRight();
+    }
+    TreeNode[] t = {parent, n};
+    return t;
+  }
+
+  /*
+    look I'm very tired and I can't think anymore so I didn't finish but I'm trynna sleep
+  */
+
 
   //main method for testing
   public static void main( String[] args )
@@ -215,6 +309,29 @@ public class BST
     System.out.println("found 25: " + (arbol.search(25) != null && arbol.search(25).getValue() == 25));
     System.out.println("height: " + arbol.height());
     System.out.println("number of leaves: " + arbol.numLeaves());
+
+    System.out.println("\nremoving node with value 1");
+    arbol.remove(1);
+    System.out.print("in: ");
+    arbol.inOrderTrav();
+    System.out.print("\npre: ");
+    arbol.preOrderTrav();
+
+    System.out.println("\nremoving node with value 3");
+    arbol.remove(3);
+    System.out.print("in: ");
+    arbol.inOrderTrav();
+    System.out.print("\npre: ");
+    arbol.preOrderTrav();
+
+    System.out.println("\nremoving node with value 1");
+    arbol.remove(2);
+    System.out.print("in: ");
+    arbol.inOrderTrav();
+    System.out.print("\npre: ");
+    arbol.preOrderTrav();
+    System.out.println();
+
     /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
